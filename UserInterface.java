@@ -7,24 +7,22 @@ public class UserInterface {
   private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
   private static Warehouse warehouse;
   private static final int EXIT = 0;
-  private static final int ADD_MEMBER = 1;
-  private static final int ADD_BOOKS = 2;
-  private static final int ISSUE_BOOKS = 3;
-  private static final int RETURN_BOOKS = 4;
-  private static final int RENEW_BOOKS = 5;
-  private static final int REMOVE_BOOKS = 6;
-  private static final int PLACE_HOLD = 7;
-  private static final int REMOVE_HOLD = 8;
-  private static final int PROCESS_HOLD = 9;
-  private static final int GET_TRANSACTIONS = 10;
-  private static final int SHOW_MEMBERS = 11;
-  private static final int SHOW_BOOKS = 12;
-  private static final int SAVE = 13;
-  private static final int RETRIEVE = 14;
+  private static final int ADD_CLIENT = 1;
+  private static final int ADD_PRODUCT = 2;
+    private static final int SHOW_CLIENTS = 3;
+    private static final int SHOW_PRODUCTS = 4;
   private static final int HELP = 15;
     
     private UserInterface() {
         warehouse = new Warehouse();
+    }
+    
+    public static UserInterface instance() {
+        if (userInterface == null) {
+            return userInterface = new UserInterface();
+        } else {
+            return userInterface;
+        }
     }
     
     // get warehouse, print client, print product, add client, add product
@@ -93,5 +91,39 @@ public class UserInterface {
             Product product = (Product)(allProducts.next());
             System.out.println(product.toString());
         }
+    }
+    
+    public static void main(String[] s) {
+        UserInterface.instance().process();
+    }
+    
+    public void process() {
+        Scanner scanner;
+        help();
+        int command = parseInt(scanner.nextLine());
+        while (command != EXIT) {
+      switch (command) {
+        case ADD_CLIENT:          addMember();
+                                  break;
+        case ADD_PRODUCT:         addBooks();
+                                  break;
+        case SHOW_CLIENTS:        issueBooks();
+                                  break;
+        case SHOW_PRODUCTS:       returnBooks();
+                                  break;	
+        case HELP:                help();
+                                  break;
+      }
+    }
+    }
+    
+    public void help(){
+        System.out.println("Enter a number as explained below:");
+        System.out.println(EXIT + " to Exit\n");
+        System.out.println(ADD_CLIENT + " to add a client");
+        System.out.println(ADD_PRODUCT + " to  add products");
+        System.out.println(SHOW_CLIENTS + " to  show clients");
+        System.out.println(SHOW_PRODUCTS + " to  show products");
+        System.out.println(HELP + " for help");
     }
 }
