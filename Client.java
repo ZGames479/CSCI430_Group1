@@ -3,19 +3,18 @@ import java.lang.*;
 import java.io.*;
 public class Client implements Serializable  {
  
-  private String name;
-  private String address;
-  private String id;
-    
-  private List wishlist = new LinkedList();
+    private String name;
+    private String address;
+    private String id;
+    private List wishlist = new LinkedList();
 
-  public Client(String name, String address, String id) {
-    this.name = name;
-    this.address = address;
-    this.id = id;
-  }
+    public Client(String name, String address, String id) {
+        this.name = name;
+        this.address = address;
+        this.id = id;
+    }
   
-  public String getName() {
+    public String getName() {
         return this.name;
     }
 
@@ -26,7 +25,7 @@ public class Client implements Serializable  {
     public String getId() {
         return this.id;
     }
-    
+
     public Iterator getWishlist() {
         return wishlist.iterator();
     }
