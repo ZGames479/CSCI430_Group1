@@ -5,13 +5,13 @@ public class ProductList implements Serializable {
     private static final long serialVersionUID = 1L;
     private List products = new LinkedList();
     private static ProductList productList;
-    private ClientList() {
+    private ProductList() {
     }
     public static ProductList instance() {
         if (productList == null) {
             return (productList = new ProductList());
         } else {
-            return clientList;
+            return productList;
         }
     }
 
