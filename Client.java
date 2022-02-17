@@ -6,12 +6,13 @@ public class Client implements Serializable  {
     private String name;
     private String address;
     private String id;
-    private List wishlist = new LinkedList();
+    private Wishlist wishlist;
 
     public Client(String name, String address, String id) {
         this.name = name;
         this.address = address;
         this.id = id;
+        this.wishlist = new Wishlist();
     }
   
     public String getName() {
@@ -27,11 +28,11 @@ public class Client implements Serializable  {
     }
 
     public Iterator getWishlist() {
-        return wishlist.iterator();
+        return wishlist.getWishlist();
     }
     
     public void addToWishlist(Product product) {
-        wishlist.add(product);
+        wishlist.insertWishlist(product);
     }
 
     public String toString() {

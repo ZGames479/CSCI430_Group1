@@ -1,29 +1,21 @@
 import java.util.*;
 import java.lang.*;
 import java.io.*;
-public class ProductList implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private List products = new LinkedList();
-    private static ProductList productList;
-    private ProductList() {
-    }
-    public static ProductList instance() {
-        if (productList == null) {
-            return (productList = new ProductList());
-        } else {
-            return productList;
-        }
+public class Wishlist implements Serializable {
+    private List wishlist = new LinkedList();   
+    public Wishlist() {
     }
 
-    public boolean insertProduct(Product product) {
-        products.add(product);
+    public boolean insertWishlist(Product product) {
+        wishlist.add(product);
         return true;
     }
 
-    public Iterator getProduct() {
-        return products.iterator();
+    public Iterator getWishlist() {
+        return wishlist.iterator();
     }
 
+    /**
     private void writeObject(java.io.ObjectOutputStream output) {
         try {
             output.defaultWriteObject();
@@ -35,12 +27,12 @@ public class ProductList implements Serializable {
 
     private void readObject(java.io.ObjectInputStream input) {
         try {
-            if (products != null) {
+            if (wishlist != null) {
                 return;
             } else {
                 input.defaultReadObject();
-                if (productList == null) {
-                    productList = (ProductList) input.readObject();
+                if (wishlist == null) {
+                    wishlist = input.readObject();
                 } else {
                     input.readObject();
                 }
@@ -50,8 +42,8 @@ public class ProductList implements Serializable {
         } catch(ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }
-    }
+    }**/
     public String toString() {
-        return products.toString();
+        return wishlist.toString();
     }
 }

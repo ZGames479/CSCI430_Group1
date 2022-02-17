@@ -4,7 +4,7 @@ import java.io.*;
 public class Warehouse implements Serializable {
     private ClientList clientList;
     private ProductList productList;
-    private Warehouse warehouse;
+    private static Warehouse warehouse;
     
     private Warehouse() {
         clientList = ClientList.instance();
@@ -13,7 +13,7 @@ public class Warehouse implements Serializable {
     
     public static Warehouse instance() {
         if(warehouse == null) {
-            return (warehouse = new Warehouse())
+            return (warehouse = new Warehouse());
         } else
             return warehouse;
     }
@@ -26,19 +26,19 @@ public class Warehouse implements Serializable {
         return null;
     }
     
-    public Client getClients() {
-        clientList.getClient();
+    public Iterator getClients() {
+        return clientList.getClient();
     }
     
-    public Product addProduct(String name, String address, String id) {
-        Client product = new Client(name, address, id);
+    public Product addProduct(String name, String quantity, String id) {
+        Product product = new Product(name, quantity, id);
         if (productList.insertProduct(product)){
             return product;
         }
         return null;
     }
     
-    public Product getProducts() {
-        productList.getProduct();
+    public Iterator getProducts() {
+        return productList.getProduct();
     }
 }
