@@ -27,7 +27,7 @@ public class UserInterface {
     
     // get warehouse, print client, print product, add client, add product
     
-    public addClient() {
+    public void addClient() {
         Scanner scanner = new Scanner(System.in);
         // Ask for name
         System.out.println("Name of new client:");
@@ -47,7 +47,7 @@ public class UserInterface {
         System.out.println(client);
     }
     
-    public getClient() {
+    public void getClient() {
         Iterator allClients = warehouse.getClients();
         while(allClients.hasNext()){
             Client client = (Client)(allClients.next());
@@ -55,8 +55,8 @@ public class UserInterface {
         }
     }
     
-    public addProduct() {
-        Scanner scanner;
+    public void addProduct() {
+        Scanner scanner = new Scanner(System.in);
         Product product;
         do {
             // Ask for name
@@ -85,7 +85,7 @@ public class UserInterface {
         } while (true);
     }
     
-    public getProduct() {
+    public void getProduct() {
         Iterator allProducts = warehouse.getProducts();
         while(allProducts.hasNext()){
             Product product = (Product)(allProducts.next());
@@ -98,9 +98,9 @@ public class UserInterface {
     }
     
     public void process() {
-        Scanner scanner;
+        Scanner scanner = new Scanner(System.in);
         help();
-        int command = parseInt(scanner.nextLine());
+        int command = Integer.parseInt(scanner.nextLine());
         while (command != EXIT) {
       switch (command) {
         case ADD_CLIENT:          addMember();

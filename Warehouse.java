@@ -4,6 +4,7 @@ import java.io.*;
 public class Warehouse implements Serializable {
     private ClientList clientList;
     private ProductList productList;
+    private Warehouse warehouse;
     
     private Warehouse() {
         clientList = ClientList.instance();
@@ -17,8 +18,19 @@ public class Warehouse implements Serializable {
             return warehouse;
     }
     
-    // addClient
-    // getClients
-    // addProduct
-    // getProducts
+    public Client addClient(String name, String address, String id) {
+        
+    }
+    
+    public Client getClients() {
+        
+    }
+    
+    public Product addProduct(String name, String address, String id) {
+        
+    }
+    
+    public Product getProducts() {
+        
+    }
 }
